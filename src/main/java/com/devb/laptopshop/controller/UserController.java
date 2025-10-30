@@ -2,8 +2,8 @@ package com.devb.laptopshop.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.devb.laptopshop.service.UserService;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +19,10 @@ public class UserController {
     }
 
     @RequestMapping("/")
-    public String getHomePage() {
+    public String getHomePage(Model model) {
         String test = this.userService.handleHello();
+        model.addAttribute("bach", test);
+        model.addAttribute("devB", "View from controller with model");
         return "hello";
     }
 
